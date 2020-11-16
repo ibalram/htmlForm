@@ -21,6 +21,7 @@
         <div>
             <label for="pwd">password input type: </label>
             <input type="password" id="pwd" name="pwd">
+            <error-output class="pwd-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">email input type: </label>
@@ -64,6 +65,7 @@
         const namePattern = RegExp("^[A-Z]{1}[a-z]{2,}$");
         const phonePattern = RegExp("^[0-9]{1,}[ ][1-9][0-9]{9}$");
         const emailPattern = RegExp("^[a-zA-Z0-9+_-]+([.][a-zA-Z0-9]+)*@([a-zA-Z0-9]+)([.][a-z]+)?[.][a-z]{2,}$");
+        const passwordPattern = RegExp("^.{8,}$");
 
         const text = document.querySelector('#text');
         const textError = document.querySelector('.text-error');
@@ -97,6 +99,15 @@
                 phoneError.textContent = "";
             else
                 phoneError.textContent = "Phone number is incorrect";
+        });
+
+        const password = document.querySelector('#pwd');
+        const passwordError = document.querySelector('.pwd-error');
+        password.addEventListener('input', function () {
+            if (passwordPattern.test(password.value))
+                passwordError.textContent = "";
+            else
+                passwordError.textContent = "Password is incorrect";
         });
 
 
