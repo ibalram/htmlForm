@@ -65,17 +65,10 @@
         const namePattern = RegExp("^[A-Z]{1}[a-z]{2,}$");
         const phonePattern = RegExp("^[0-9]{1,}[ ][1-9][0-9]{9}$");
         const emailPattern = RegExp("^[a-zA-Z0-9+_-]+([.][a-zA-Z0-9]+)*@([a-zA-Z0-9]+)([.][a-z]+)?[.][a-z]{2,}$");
-        const passwordPattern = RegExp("^.{8,}$");
+        const passwordPattern = RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=^[^#?!@$%^&*-]*[#?!@$%^&*-][^#?!@$%^&*-]*$).{8,}$");
 
         const text = document.querySelector('#text');
         const textError = document.querySelector('.text-error');
-        // text.oninput = function () {
-        //     let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
-        //     if (nameRegex.test(text.value))
-        //         textError.textContent = "";
-        //     else
-        //         textError.textContent = "Name is incorrect";
-        // };
         text.addEventListener('input', function () {
             if (namePattern.test(text.value))
                 textError.textContent = "";
