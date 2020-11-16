@@ -38,6 +38,7 @@
         <div>
             <label for="tel">tel input type: </label>
             <input type="tel" id="tel" name="tel">
+            <error-output class="tel-error" for="tel"></error-output>
         </div>
         <div>
             <label for="search">search input type: </label>
@@ -87,6 +88,15 @@
                 emailError.textContent = "";
             else
                 emailError.textContent = "Email is incorrect";
+        });
+
+        const phone = document.querySelector('#tel');
+        const phoneError = document.querySelector('.tel-error');
+        phone.addEventListener('input', function () {
+            if (phonePattern.test(phone.value))
+                phoneError.textContent = "";
+            else
+                phoneError.textContent = "Phone number is incorrect";
         });
 
 
